@@ -186,7 +186,10 @@ def main_phonebook():
 
 
 DEF_PB = 'phonebook.json'
-print(f'Используется телефонный справочник {DEF_PB}')
-with open(DEF_PB, 'r') as file_object:
-    phonebook = json.load(file_object)
-main_phonebook()
+try:
+    with open(DEF_PB, 'r') as file_object:
+        phonebook = json.load(file_object)
+        print(f'Используется телефонный справочник {DEF_PB}')
+        main_phonebook()
+except FileNotFoundError:
+    print(f'Файла {DEF_PB} нет в дериктории')
